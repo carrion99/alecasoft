@@ -1,0 +1,46 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+<tr>
+    <th align="center" scope="col" style="width: 10%;">Dni</th>
+    <th scope="col" style="width: 10%;">Profesion</th>
+    <th scope="col" style="width: 10%;">Apellido Paterno</th>
+    <th scope="col" style="width: 10%;">Apellido Materno</th>
+    <th scope="col" style="width: 10%;">Nombres</th>
+    <th scope="col" style="width: 10%;">Fecha Nacimiento</th>
+    <th scope="col" style="width: 5%;">Genero</th>
+    <th scope="col" style="width: 5%;">Estado Civil</th>
+    <th scope="col" style="width: 5%;">Ciudad</th>
+    <th scope="col" style="width: 10%;">Direccion</th>
+    <th scope="col" style="width: 10%;">Email</th>
+    <th scope="col" style="width: 10%;">Usuario</th>
+    <th align="center" scope="col" style="width: 10%;">Opciones</th>
+</tr>
+{% endblock %}
+
+{% block rows %}
+{% for c in object_list %}
+<tr>
+    <td align="center">{{ c.dni }}</td>
+    <td>{{ c.Tipo }}</td>
+    <td>{{ c.apellidoPaterno }}</td>
+    <td>{{ c.apellidoMaterno }}</td>
+    <td>{{ c.nombres }}</td>
+    <td>{{ c.fechaNacimiento }}</td>
+    <td>{{ c.Sexo }}</td>
+    <td>{{ c.Estado_Civil }}</td>
+    <td>{{ c.Ciudad }}</td>
+    <td>{{ c.Direccion }}</td>
+    <td>{{ c.Email }}</td>
+    <td>{{ c.Usuario }}</td>
+    <td align="center">
+        <a href="{% url 'erp:persona_update' c.dni %}" class="btn btn-primary btn-xs">
+            <i class="fas fa-edit"></i>
+        </a>
+        <a href="{% url 'erp:persona_delete' c.dni %}" class="btn btn-danger btn-xs">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

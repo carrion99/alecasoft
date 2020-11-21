@@ -1,0 +1,28 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+<tr>
+    <th align="center" scope="col" style="width: 10%;">Nro</th>
+    <th scope="col" style="width: 30%;">Profesion</th>
+    <th scope="col" style="width: 50%;">Descripcion</th>
+    <th align="center" scope="col" style="width: 10%;">Opciones</th>
+</tr>
+{% endblock %}
+
+{% block rows %}
+{% for c in object_list %}
+<tr>
+    <td align="center">{{ c.idTipo }}</td>
+    <td>{{ c.tipo }}</td>
+    <td>{{ c.descripcion }}</td>
+    <td align="center">
+        <a href="{% url 'erp:tipo_update' c.idTipo %}" class="btn btn-primary btn-xs">
+            <i class="fas fa-edit"></i>
+        </a>
+        <a href="{% url 'erp:tipo_delete' c.idTipo %}" class="btn btn-danger btn-xs">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

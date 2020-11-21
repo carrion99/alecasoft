@@ -1,0 +1,32 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+<tr>
+    <th align="center" scope="col" style="width: 5%;">Nro</th>
+    <th scope="col" style="width: 27%;">Calle Principal</th>
+    <th scope="col" style="width: 27%;">Calle Secundaria</th>
+    <th scope="col" style="width: 20%;">Referencia</th>
+    <th scope="col" style="width: 20%;">Descripcion</th>
+    <th align="center" scope="col" style="width: 8%;">Opciones</th>
+</tr>
+{% endblock %}
+
+{% block rows %}
+{% for c in object_list %}
+<tr>
+    <td align="center">{{ c.idDireccion }}</td>
+    <td>{{ c.callePrincipal }}</td>
+    <td>{{ c.calleSecundaria }}</td>
+    <td>{{ c.referencia }}</td>
+    <td>{{ c.descripcion }}</td>
+    <td align="center">
+        <a href="{% url 'erp:direccion_update' c.idDireccion %}" class="btn btn-primary btn-xs">
+            <i class="fas fa-edit"></i>
+        </a>
+        <a href="{% url 'erp:direccion_delete' c.idDireccion %}" class="btn btn-danger btn-xs">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}

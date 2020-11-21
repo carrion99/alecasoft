@@ -1,0 +1,28 @@
+{% extends 'list.html' %}
+
+{% block columns %}
+<tr>
+    <th align="center" scope="col" style="width: 10%;">Nro</th>
+    <th scope="col" style="width: 30%;">Email</th>
+    <th scope="col" style="width: 50%;">Descripcion</th>
+    <th align="center" scope="col" style="width: 10%;">Opciones</th>
+</tr>
+{% endblock %}
+
+{% block rows %}
+{% for c in object_list %}
+<tr>
+    <td align="center">{{ c.idEmail }}</td>
+    <td>{{ c.email }}</td>
+    <td>{{ c.descripcion }}</td>
+    <td align="center">
+        <a href="{% url 'erp:email_update' c.idEmail %}" class="btn btn-primary btn-xs">
+            <i class="fas fa-edit"></i>
+        </a>
+        <a href="{% url 'erp:email_delete' c.idEmail %}" class="btn btn-danger btn-xs">
+            <i class="fas fa-trash-alt"></i>
+        </a>
+    </td>
+</tr>
+{% endfor %}
+{% endblock %}
