@@ -1,0 +1,2 @@
+# alecasoft
+django pagina web
